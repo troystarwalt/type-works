@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  
+</head>
+<body>
+  <main class="container">
+    <section id="entry">
+      <form action="index_submit" accept-charset="utf-8" id='my-form'>
+        <label>What do you want to say?<input type="text" name="phrase" value="" id="field" placeholder="Good day sir!" autofocus></label>
+        <label><input type="submit" name="enter" value="Submit" id="button-sub" class="button"></label>
+        <label><input type="reset" name="enter" value="Clear" id="button-clr" class="button"></label>
+      </form>
+    </section>
+    <section id="response">
+      <div id="response_text"></div>
+    </section>
+    <canvas id="canvas">Your browser does not support the canvas element.</canvas>
+  </main>
+  <script src="script.js" type="text/javascript" charset="utf-8" async defer></script>
+</body>
+</html>
