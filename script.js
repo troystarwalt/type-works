@@ -78,6 +78,8 @@ let fireworks = [], particles = [];
 let mouseX, mouseY;
 // Variable to check if mouse is down.
 let isMouseDown = false;
+// Variable to check if a key was pressed.
+let isKeyUp = false;
 // Initial Hue.
 let hue = 120;
 // Track number of ticks since automated firework.
@@ -98,10 +100,17 @@ function handleClickOnSubmit(e) {
   passValue(e.target[0].value)
 }
 
+form.addEventListener('keydown', function(e) {
+  if ( e.target == txt && e.keyCode != 13) {
+    passValue(e.target.value);
+    isKeyUp = true
+  }
+})
+
 form.addEventListener('keyup', function(e) {
   if ( e.target == txt ) {
     passValue(e.target.value);
-    
+    isKeyUp = false
   }
 })
 
@@ -402,13 +411,16 @@ function launchManualFirework() {
   // Check if ticks since last firework launch is less than minimum value.
   if (ticksSinceFirework >= TICKS_PER_FIREWORK_MIN) {
     // Check if mouse is down.
-    if (isMouseDown) {
+    if (isKeyUp) {
       // Set start position to bottom center.
       let startX = canvas.width / 2;
       let startY = canvas.height;
       // Set end position to current mouse position.
-      let endX = mouseX;
-      let endY = mouseY;
+      // let endX = mouseX;
+      // let endY = mouseY;
+      // Set end positon to random postion
+      let endX = random(0, canvas.width);
+      let endY = random(0, canvas.height / 2);
       // Create new firework and add to collection.
       fireworks.push(new Firework(startX, startY, endX, endY));
       // Reset tick counter.
